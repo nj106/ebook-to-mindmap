@@ -1,0 +1,24 @@
+name: Sync upstream
+
+# nj106/ebook-to-mindmap 上游自动同步（替代已暂停的 Pull 应用）
+# GitHub 官方 merge-upstream 接口 + GITHUB_TOKEN，每天 16:00 北京时间
+# 上游 SSShooter/ebook-to-mindmap 默认分支 master（2026-10-19 核验）
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # 16:00 Asia/Shanghai
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge upstream
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api repos/${{ github.repository }}/merge-upstream \
+            -X POST -f branch=master
