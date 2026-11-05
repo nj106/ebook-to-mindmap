@@ -1,6 +1,7 @@
 # Portainer production compose for ebook-to-mindmap.
 # Stateless frontend (user data lives in browser localStorage); no volumes.
 # Image built by .github/workflows/build-image.yml -> ghcr.io/nj106/ebook-to-mindmap:latest
+# GitOps: Portainer polling enabled 2026-11-05 (interval 5m, forcePullImage)
 services:
   ebook-to-mindmap:
     image: ghcr.io/nj106/ebook-to-mindmap:latest
