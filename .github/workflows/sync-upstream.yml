@@ -6,7 +6,7 @@ name: Sync upstream
 
 on:
   schedule:
-    - cron: "52 2 * * *" # 16:00 Asia/Shanghai
+    - cron: "52 2 * * *" # 10:52 Asia/Shanghai (02:52 UTC, GitHub 低负载时段)
   workflow_dispatch:
 
 permissions:
